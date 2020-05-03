@@ -1,0 +1,21 @@
+{
+  "name": "geoip-lookup",
+  "version": "0.0.1",
+  "description": "Look up IP address and output GeoIP information pretty printed",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "geoip",
+    "ip",
+    "maxmind"
+  ],
+  "author": "Rushi Vishavadia <rushi.v@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "cli-tableau": "^2.0.0",
+    "geoip-lite": "^1.4.1",
+    "yargs": "^15.3.1"
+  }
+}
