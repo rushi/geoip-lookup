@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "cli-tableau": "^2.0.0",
+    "esm": "^3.2.25",
     "geoip-lite": "^1.4.1",
     "yargs": "^15.3.1"
   }

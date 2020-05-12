@@ -1,11 +1,12 @@
-#!/usr/bin/env node
+#!/usr/bin/env node -r esm
 
-const argv = require('yargs').argv;
-const geoip = require('geoip-lite');
-const Table = require('cli-tableau');
+import { argv } from 'yargs';
+import geoip from 'geoip-lite';
+import Table from 'cli-tableau';
 
 if (!argv._[0]) {
-    return console.error('Need one more IP address on the CLI');
+    console.error('Need atleast one IP address');
+    process.exit(1);
 }
 
 var table = new Table({
@@ -16,7 +17,7 @@ var table = new Table({
 argv._.forEach(ip => {
     const geo = geoip.lookup(ip);
     if (geo) {
-        argv.v && console.log(geoip.pretty(ip), JSON.stringify(geo));
+        argv.v && console.log(geoip.pretty(ip), JSON.stringify(geo, null, 2))
         table.push([geoip.pretty(ip), geo.city, geo.region, geo.country, geo.timezone]);
     } else {
         table.push([ip, 'Invalid IP']);
