@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const argv = require('yargs').argv;
 const geoip = require('geoip-lite');
 const Table = require('cli-tableau');
