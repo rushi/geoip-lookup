@@ -2,6 +2,12 @@
 
 Quick tool to batch look up IPs using ipinfo.io
 
+## Install
+
+* `npm install`
+* Goto [ipinfo.io](https://ipinfo.io/) signup and get a free token
+* Run `echo TOKEN=<token> > .env`
+
 ## Example
 
 ```
