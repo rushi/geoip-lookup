@@ -1,10 +1,13 @@
 #!/usr/bin/env node -r esm
 
+import fs from 'fs';
+import path from 'path';
 import Table from 'cli-tableau';
 import axios from 'axios';
 import dotenv from 'dotenv';
 
-dotenv.config();
+const envPath = path.dirname(fs.realpathSync(process.argv[1])) + '/.env';
+dotenv.config({ path: envPath });
 
 var table = new Table({
     head: ['IP', 'City', 'Region', 'Country', 'Timezone', 'Hostname', 'Org'],
@@ -17,7 +20,7 @@ async function getIpInfo(ip) {
         const response = await axios.get(`https://ipinfo.io/${ip}?token=${process.env.TOKEN}`);
         return response.data;
     } catch (err) {
-        return {ip, message: err.message};
+        return { ip, message: err.message };
     }
 }
 
@@ -40,6 +43,11 @@ async function run(args) {
 const args = process.argv.slice(2);
 if (args.length === 0) {
     console.log('Please specify one or IP address as arguments');
+    process.exit(1);
+}
+
+if (!process.env.TOKEN) {
+    console.log('No token specified. API calls will fail so quitting now');
     process.exit(1);
 }
 
