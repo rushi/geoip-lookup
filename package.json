@@ -2,6 +2,7 @@
   "name": "geoip-lookup",
   "version": "0.0.1",
   "description": "Look up IP address and output GeoIP information pretty printed",
+  "type": "module",
   "main": "ip.js",
   "bin": {
     "ip": "./ip.js"
